@@ -24,10 +24,18 @@ class Categorie
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Article::class)]
     private Collection $articles;
 
+
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
     }
+
+//    public function __toString(): string
+//    {
+//        return $this->titre;
+//    }
+
 
     public function getId(): ?int
     {
