@@ -3,16 +3,13 @@
 {% block title %}Articles{% endblock %}
 
 {% block body %}
-
-    <h1>Articles</h1>
+    <h1>Liste des articles</h1>
+    <p>Il y a {{ articles|length }} article(s)</p>
 
     {% for article in articles %}
-        <div>
-            <h2>#{{ loop.index }} - {{ article.titre }}</h2>
-            <p>{{ article.texte }}</p>
-            <i>{{ article.date|date('d/m/Y') }}</i>
-        </div>
+        <h2>#{{ loop.index }} - {{ article.titre }} ({{ article.categorie != null ? article.categorie.titre : 'Pas de catégorie' }})</h2>
+        <p>{{ article.texte }}</p>
+        <i>{{ article.datePublication|date('d/m/Y H:i') }}</i>
+        <p>{{ article.auteur }}</p>
     {% endfor %}
-
-    <p>Il y {{ articles|length }} article(s)</p>
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategorieController!{% endblock %}
+
+{% block body %}
+    <h1>{{ categorie.titre }}</h1>
+    <p>Il y a {{ categorie.articles|length }} article(s)</p>
+
+
+    {% for article in categorie.articles %}
+        <h2>#{{ loop.index }} - {{ article.titre }}
+            ({{ article.categorie != null ? article.categorie.titre : 'Pas de catégorie' }})</h2>
+        <p>{{ article.texte }}</p>
+        <i>{{ article.datePublication|date('d/m/Y H:i') }}</i>
+        <p>{{ article.auteur }}</p>
+    {% endfor %}
+{% endblock %}

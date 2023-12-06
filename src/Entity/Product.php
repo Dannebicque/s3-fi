@@ -20,7 +20,7 @@ class Product
     private ?float $price = null;
 
     #[ORM\Column]
-    private ?int $quantity = 10;
+    private ?int $quantity = null;
 
     public function getId(): ?int
     {

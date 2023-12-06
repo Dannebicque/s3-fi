@@ -6,7 +6,20 @@
     <h1>Accueil !</h1>
 
     <div>
-        <img src="{{ asset('images/images.png') }}" alt="image">
+        <img src="{{ asset('images/images.png') }}" alt="Image d'un logo">
     </div>
 
+    <div>
+        {% for categorie in categories %}
+            <a href="{{ path('app_categorie', {categorie: categorie.id}) }}">{{ categorie.titre }}</a> |
+        {% endfor %}
+    </div>
+
+    <div>
+        <h2>Dernier article : {{ article.titre }}
+            ({{ article.categorie != null ? article.categorie.titre : 'Pas de catégorie' }})</h2>
+        <p>{{ article.texte }}</p>
+        <i>{{ article.datePublication|date('d/m/Y H:i') }}</i>
+        <p>{{ article.auteur }}</p>
+    </div>
 {% endblock %}
